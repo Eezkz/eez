@@ -1,0 +1,16 @@
+!pip install -U "scipy==1.4.*"
+from scipy.optimize import linprog
+obj=[5,12]
+left=[[20,10],
+      [10,20],
+      [10,30]]
+right=[200,
+       120,
+       150]
+bnd = [(0, float("inf")),  # Bounds of x
+       (0, float("inf"))]  # Bounds of y
+
+opt= linprog(c=obj, A_ub=left, b_ub=right,
+             bounds=bnd,
+            method="revised simplex")
+opt
